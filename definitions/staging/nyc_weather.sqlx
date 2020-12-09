@@ -1,5 +1,5 @@
 config {
-  type: "table",
+  type: "view",
   schema: "staging",
   description: "Cleaned up data corresponding to New York City",
   // column level documentation, defined in includes/docs.js
@@ -18,7 +18,7 @@ FROM (
     IF (wx.element = 'TMIN', wx.value/10, NULL) AS tmin,
     IF (wx.element = 'TMAX', wx.value/10, NULL) AS tmax
   FROM
-    ${ref("ghcnd_2020")} AS wx
+    ${ref("ghcnd_2018")} AS wx
   WHERE
     wx.id = 'USW00094728'
 )

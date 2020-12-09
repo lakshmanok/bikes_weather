@@ -1,0 +1,18 @@
+config {
+  type: "view",
+  schema: "staging",
+  description: "Bicycle trip count and duration by weather",
+}
+
+select 
+  date,
+  AVG(duration) AS avg_duration,
+  COUNT(duration) AS num_trips,
+  ANY_VALUE(rain_mm > 5) AS rainy,
+  ANY_VALUE(tmin_celsius + tmax_celsius)/2 AS temperature
+from 
+  ${ref("bicycle_trips")}
+JOIN
+  ${ref("nyc_weather")}
+USING(date)
+GROUP BY date

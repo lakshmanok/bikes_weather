@@ -2,6 +2,6 @@ config {
   type: "declaration",
   database: "bigquery-public-data",
   schema: "ghcn_d",
-  name: "ghcnd_2020",
+  name: "ghcnd_2018",
   description: "Weather data from Global Historical Climate Network (GHCN) in 2020"
 }
